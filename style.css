@@ -1,0 +1,533 @@
+body.recommandation-page {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background-color: #000000;
+  color: #292929;
+  margin: 0; /* 기본 margin 제거 */
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: rgba(219, 219, 219, 0.7);
+  text-decoration: none;
+  font-weight: initial;
+  padding: 20px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 40px 20px; /* 충분한 내부 여백 */
+  box-sizing: border-box;
+}
+
+.index-page main {
+  justify-content: flex-start;
+  padding-top: 520px;
+}
+
+.recommandation-page {
+  margin: 0;
+  padding: 0;
+  font-family: 'Pretendard', sans-serif;
+  transition: background 0.5s ease-in-out;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  position: relative;
+  animation: fadeIn 0.5s ease forwards;
+  width: 100%;
+  max-width: 400px; /* 검색창 최대 너비 제한 */
+  margin-left: auto;
+  margin-right: auto;
+  top: -50px; /* 위로 30px 올림 */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+#searchContainer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+#searchContainer input[type="text"] {
+  width: 100%;
+  padding-left: 40px;
+  position: relative;
+  z-index: 20;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 16px;
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+  outline: none;
+}
+
+#searchContainer .search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 15;
+  width: 20px;
+  height: 20px;
+}
+
+.no-songs-message {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  margin-top: 20px;
+}
+
+#moodInput {
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 12px 60%;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #fff;
+  font-size: 16px;
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+  z-index: 1;
+  position: relative;
+  margin-top: 8px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+#moodInput:focus {
+  outline: none;
+}
+
+#moodInput::placeholder {
+  color: white;
+  opacity: 0.8;
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+#searchButton {
+  position: absolute;
+  right: 10px;
+  top: 59%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 25px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+#description {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 23px;
+  color: #f3f3f3;
+  font-style: italic;
+  display: block; /* 항상 보여줘야 하니 none -> block */
+  text-shadow:
+    0 0 2px rgb(255, 255, 255),
+    0 0 6px rgba(0, 0, 0, 7),
+    0 0 0px rgba(0, 0, 0, 0.4);
+  margin-bottom: 60px; /* 버튼과 간섭 방지 */
+}
+
+/* 이 부분에서 겹침 방지 및 중앙 정렬을 위해 grid 조정 */
+#songList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  padding: 40px;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.song-card.large-antique {
+  width: 100%;
+  max-width: 260px;
+  height: 380px;
+  padding: 16px;
+  background-color: #f5f1e8;
+  border-radius: 16px;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+  font-family: 'Cormorant Garamond', serif;
+  transition: transform 0.3s;
+  box-sizing: border-box;
+}
+
+.song-card {
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 0px solid #c4a484;
+  border-radius: 16px;
+  padding: 20px;
+  width: 100%;
+  max-width: 280px;
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+  color: #3e2f1c;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  letter-spacing: 0.5px;
+  box-sizing: border-box;
+}
+
+.song-card:hover {
+  transform: scale(1.05);
+}
+
+.song-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  filter: grayscale(100%) brightness(0.9);
+  transition: filter 0.4s ease;
+}
+
+.song-card:hover img {
+  filter: grayscale(0%) brightness(1);
+}
+
+#animatedBackground {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.5s ease-in-out;
+}
+
+#floatingText {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+  animation: floatText 20s linear infinite;
+  white-space: nowrap;
+  overflow: visible;
+  z-index: 10;
+}
+
+/* 수정: 재생버튼 항상 화면 하단 코멘트 아래 중앙에 위치하도록 수정 */
+audio#audioPlayer {
+  display: block;
+  margin: 0 auto;
+  position: fixed;
+  /* bottom 값을 #description 아래로 맞춤 */
+  bottom: 60px; /* 코멘트 밑 여유 공간 */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+}
+
+/* 기존 재생버튼 CSS 제거 */
+#customPlayPause {
+  display: block; /* display none -> block */
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  position: fixed; /* fixed 유지 */
+  bottom: 60px; /* #description 바로 아래 위치 */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  margin: 0;
+}
+
+@keyframes floatText {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+input[type="text"]::placeholder {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+input[type="text"] {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+button {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  padding: 6px 12px;
+  background-color: #eee6dd;
+  border: 1px solid #aaa;
+  color: #333;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e0d4c3;
+}
+
+h1 {
+  font-size: 18vw;
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  color: #8c8c8c;
+  transition: transform 0.6s ease-in-out;
+  text-shadow:
+    0 0 2px rgba(0, 0, 0, 1),
+    0 0 6px rgba(125, 125, 125, 0.6),
+    0 0 0px rgba(0, 0, 0, 0.4);
+}
+
+h1:hover {
+  transform: scale(1.08);
+}
+
+p {
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-top: -80px;
+  color: #a7a7a7;
+}
+
+@media (max-width: 768px) {
+  .search-container {
+    top: 25vh;
+  }
+
+  main h1 {
+    font-size: 2rem;
+    white-space: normal;
+  }
+
+  #songList {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    padding: 20px;
+  }
+
+  .song-card.large-antique,
+  .song-card {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+body.index-page {
+  background-image: url('images/home.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
+}
+
+.main-title-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.main-title-link:hover {
+  text-decoration: none;
+}
+
+#trail-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.trail-icon {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  opacity: 0.4;
+  fill: rgba(75, 75, 75, 0.5);
+  animation: fadeAndMove 3s ease-out forwards;
+}
+
+@keyframes fadeAndMove {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.3) translateY(-20px);
+    opacity: 0;
+  }
+}
+
+.main-image {
+  width: 70vw;
+  max-width: 900px;
+  height: auto;
+  display: block;
+  margin: 100px auto;
+  transition: transform 0.4s ease;
+  cursor: pointer;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.main-image:hover {
+  transform: scale(1.03);
+}
+
+#customPlayPause {
+  display: none;
+  width: 40px;
+  height: 40px;
+  margin-top: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* 기존 CSS는 그대로 유지 */
+
+/* 검색창 배경 기본은 투명 */
+#moodInput {
+  background-color: transparent;
+  color: white;
+}
+
+html, body {
+  overflow: hidden; /* 스크롤 방지 */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* 검색창 관련 기존 요소 숨기기 */
+.search-container,
+#searchContainer,
+#moodInput,
+#searchButton {
+  display: none !important;
+}
+
+.keyword-bar {
+  text-align: center;
+  margin: 20px auto;
+  font-size: 0.9em;
+  color: #888;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.keyword {
+  cursor: pointer;
+  padding: 0 8px;
+  transition: color 0.2s;
+}
+
+.keyword:hover {
+  color: #333;
+}
+
+.mood-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem; /* 👈 줄여줌 */
+  color: #fafafa;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 13);
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.mood-keywords .keyword::after {
+  content: "|";
+  margin-left: 2em;
+  color: #fafafa;
+}
+
+.mood-keywords .keyword:last-child::after {
+  content: ""; /* 마지막 바 제거 */
+}
+/* style.css 혹은 <style> 태그에 추가 */
+.note-icon {
+  position: fixed;
+  pointer-events: none; /* 마우스 이벤트 무시 */
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.7); /* 반투명 하얀색 */
+  user-select: none;
+  animation: fadeOutNote 3s forwards;
+  z-index: 9999;
+}
+
+@keyframes fadeOutNote {
+  0% {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
