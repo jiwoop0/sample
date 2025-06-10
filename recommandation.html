@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>무드 기반 앨범 추천</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <style>
+    body.recommandation-page {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    input[type="text"],
+    button {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+    }
+    .description {
+      font-style: italic;
+    }
+    #customPlayPause {
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+    #moodInput {
+      background-color: transparent;
+      transition: background-color 0.3s ease;
+    }
+    #moodInput.active {
+      background-color: rgba(128, 128, 128, 0.5);
+      border-radius: 8px;
+      border: 1px solid #888;
+    }
+  </style>
+</head>
+
+<body class="recommandation-page">
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="recommandation.html">Recommendation</a></li>
+      <li><a href="About.html">About</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- 감정 선택 키워드 -->
+    <div id="moodKeywords" class="mood-keywords">
+  <span class="keyword" data-mood="우울">우울</span>
+  <span class="keyword" data-mood="고독">고독</span>
+  <span class="keyword" data-mood="희망">희망</span>
+  <span class="keyword" data-mood="향수">향수</span>
+  <span class="keyword" data-mood="사랑">사랑</span>
+  <span class="keyword" data-mood="행복">행복</span>
+  <span class="keyword" data-mood="그리움">그리움</span>
+</div>
+
+    <!-- 추천곡 및 설명 -->
+    <div id="songList"></div>
+    <div id="description" class="description" style="display:none;"></div>
+    <audio id="audioPlayer" style="display: none;"></audio> <!-- controls 속성 제거! -->
+   <img id="customPlayPause" src="images/play.png" alt="Play" style="display:none; cursor:pointer;" />
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
